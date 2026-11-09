@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Farol — piloto de inclusão digital",
+  "version": "0.1.0",
+  "description": "Ajuda a entender uma página e localizar possíveis próximos passos. Não clica, envia nem apaga por você.",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_title": "Abrir o Farol",
+    "default_popup": "popup.html"
+  }
+}
