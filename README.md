@@ -1,46 +1,43 @@
 # Farol — piloto de inclusão digital
 
-**Uma bolinha discreta que acompanha a pessoa na página, pode ser reposicionada e destaca onde talvez seja o próximo lugar para interagir. A pessoa continua no comando.**
+**Uma bolinha pequena e discreta por cima da página em que a pessoa já está. Toque para abrir uma conversa simples; use “Mais ferramentas” quando precisar.**
 
-**A small orb that stays on the page, can be repositioned, and highlights a possible next place to interact. The person stays in control.**
+**A small, unobtrusive orb over the page the person is already using. Tap it to open a simple conversation; use “More tools” when needed.**
 
 ## O que é / What it is
 
-Farol é um protótipo de assistente de inclusão digital. A função principal é orientar visualmente: ajudar a pessoa a entender termos, instruções e funções de sites e programas e destacar um possível próximo elemento usando o objetivo digitado e, opcionalmente, um trecho de manual/README escolhido pela pessoa.
+Farol é um protótipo de assistente de inclusão digital. Não abre um site próprio para orientar: a extensão injeta uma bolinha e um painel de conversa sobre a página atual, após a pessoa tocar no ícone do Farol no navegador. A bolinha pode ser movida para não atrapalhar. O painel inicial é simples e as ferramentas adicionais ficam recolhidas.
 
-Farol is a digital-inclusion assistant prototype. Its primary function is visual guidance: helping people understand terms, instructions, and features in websites and software, and highlighting a possible next element based on a typed goal and, optionally, a manual/README excerpt chosen by the person.
+Farol is a digital-inclusion assistant prototype. It does not open a separate website to provide guidance: after the person clicks the Farol browser icon, the extension places an orb and conversation panel over the current page. The orb can be moved out of the way. The initial panel is simple, with extra tools collapsed.
 
 ## Protótipo / Prototype
 
-- `index.html` é a demonstração visual original da bolinha e do painel Farol.
-- `extension/` contém uma extensão experimental para Chrome/Edge desktop. A pessoa a aciona na aba atual, move a bolinha, informa um objetivo, pode colar instruções e pede ao Farol para procurar e destacar um elemento possível.
-- O destaque é a função central da extensão, mas a correspondência é uma busca simples por palavras: pode errar ou não encontrar nada. O Farol não clica.
-- A extensão pode exibir até três avisos por sessão de overlay quando o objetivo/manual ou elemento encontrado contém palavras associadas a pagamento ou exclusão. A detecção é heurística, pode falhar e não bloqueia a página.
-- A cópia é iniciada pela pessoa. O Farol não paga, não apaga, não envia mensagens, não pede senha e não executa ações no site.
+- `index.html` é a demonstração visual original.
+- `extension/` contém uma extensão experimental para Chrome/Edge desktop. Ao tocar no ícone do navegador, ela tenta mostrar a bolinha sobre a aba atual; não abre uma página própria. A pessoa toca na bolinha para abrir ou fechar o chat.
+- A pessoa descreve o que procura; o protótipo tenta encontrar texto ou um controle com palavras semelhantes e destacar uma possível correspondência. A pessoa confere e interage. O Farol não clica.
+- “Mais ferramentas” contém colar trecho de manual, copiar a conversa e encerrar/limpar os dados temporários desta aba.
+- A extensão pode exibir até três alertas por overlay quando o pedido, trecho informado ou resultado contém palavras associadas a pagamento ou exclusão. A detecção é heurística, pode falhar e não bloqueia a página.
+- O protótipo não usa IA ou servidor, não salva a conversa, não paga, apaga, envia mensagens ou pede senhas.
 
 ## Instalar a extensão experimental / Install the experimental extension
 
-1. Baixe ou clone este repositório no computador. / Download or clone this repository on your computer.
-2. Abra `chrome://extensions` no Chrome ou `edge://extensions` no Edge. / Open the extensions page in Chrome or Edge.
-3. Ative **Modo do desenvolvedor**. / Turn on **Developer mode**.
-4. Escolha **Carregar sem compactação** e selecione a pasta `extension/`. / Choose **Load unpacked** and select the `extension/` folder.
-5. Abra um site e clique no ícone do Farol. O navegador pode não permitir a extensão em páginas internas ou protegidas. / Open a website and click the Farol icon. The browser may block extensions on internal or protected pages.
+1. Baixe ou clone este repositório no computador.
+2. Abra `chrome://extensions` no Chrome ou `edge://extensions` no Edge.
+3. Ative **Modo do desenvolvedor**.
+4. Escolha **Carregar sem compactação** e selecione a pasta `extension/`.
+5. Abra um site comum e toque no ícone do Farol na barra do navegador. A bolinha será colocada sobre a página atual. Páginas internas ou protegidas podem bloquear extensões.
 
-É uma instalação de teste para computador, não uma publicação na loja nem um app para celular. A extensão pede acesso à aba atual somente quando a pessoa a aciona (`activeTab`); o protótipo não usa servidor nem envia o conteúdo da página para fora do navegador.
-
-This is a desktop test installation, not a store release or a mobile app. The extension requests access to the current tab only when invoked (`activeTab`); this prototype does not use a server or send page content outside the browser.
+É uma instalação de teste para computador, não uma publicação na loja nem um app para celular. A extensão usa a permissão `activeTab` quando a pessoa aciona o ícone; o conteúdo não é enviado para um servidor. Para remover os dados temporários, abra o chat, toque em **Mais ferramentas** e escolha **Encerrar e limpar**.
 
 ## Limitações importantes / Important limitations
 
-- O texto do README/manual precisa ser colado pela pessoa; a extensão ainda não busca documentação automaticamente.
+- A extensão só é ativada na aba atual após a pessoa tocar no ícone. Ela não acompanha automaticamente outras abas nem permanece disponível em páginas que o navegador bloqueia.
 - A busca é simples e pode destacar o lugar errado ou não encontrar nada. Sempre confira o destaque.
-- Avisos de risco usam palavras-chave e podem deixar passar riscos ou gerar avisos indevidos. Eles não substituem a leitura cuidadosa nem protegem contra pagamentos/exclusões.
-- O protótipo não é IA, não aprende dados pessoais, não lê todas as partes da página e não opera WhatsApp ou outros aplicativos.
-- Transcrição de voz, integração com tradutores e suporte móvel ainda não estão implementados nesta extensão.
-- Esta versão não foi testada em todos os sites/navegadores e não deve ser usada como mecanismo de segurança.
+- O trecho de manual/README precisa ser colado pela pessoa; o protótipo não busca documentação automaticamente.
+- Os alertas usam palavras-chave, podem deixar passar riscos ou gerar avisos indevidos e não são uma proteção para pagamentos ou exclusões.
+- Não há IA, voz, integração com tradutores, controle de permissões de sites, nem suporte móvel nesta versão.
+- O protótipo não foi testado em todos os sites/navegadores e não deve ser usado como mecanismo de segurança.
 
 ## Princípio de segurança / Safety principle
 
-O Farol orienta, prepara e destaca um possível caminho. A pessoa revisa e interage. Não apagar, pagar, enviar ou confirmar automaticamente.
-
-Farol guides, prepares, and highlights a possible path. The person reviews and interacts. Never delete, pay, send, or confirm automatically.
+O Farol orienta, explica e destaca um possível caminho. A pessoa revisa e interage. Não apagar, pagar, enviar ou confirmar automaticamente.
