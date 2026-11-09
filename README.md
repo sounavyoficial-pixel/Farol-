@@ -1,43 +1,30 @@
 # Farol — piloto de inclusão digital
 
-**Uma bolinha pequena e discreta por cima da página em que a pessoa já está. Toque para abrir uma conversa simples; use “Mais ferramentas” quando precisar.**
+**Uma bolinha pequena e discreta por cima da página em que a pessoa já está. Toque para abrir um chat compacto; use o botão ⋯ para mostrar ferramentas extras.**
 
-**A small, unobtrusive orb over the page the person is already using. Tap it to open a simple conversation; use “More tools” when needed.**
+## Como funciona
 
-## O que é / What it is
+- A extensão experimental para Chrome/Edge desktop é chamada pelo ícone do navegador na aba atual. Ela não abre um site ou app separado.
+- Uma bolinha pequena aparece por cima da página. É possível arrastá-la; tocar nela abre ou fecha o chat.
+- Escreva o que quer encontrar e toque em **Mostrar onde tocar**. O Farol tenta encontrar uma correspondência por palavras e marca um único elemento com um contorno brilhante, sem escurecer ou cobrir o restante da tela. A pessoa confere e toca; o Farol nunca clica.
+- O botão **⋯** abre ferramentas secundárias: colar trecho de manual/README, copiar a conversa, limpar a marcação e encerrar/limpar os dados temporários.
+- Pagamentos, exclusões e termos de risco podem gerar até três alertas. A detecção é simples, pode falhar e não bloqueia a página. O Farol não paga, apaga, envia nem confirma ações.
+- O conteúdo da página só é examinado quando a pessoa pede o destaque. O protótipo não envia os dados a um servidor nem os salva.
 
-Farol é um protótipo de assistente de inclusão digital. Não abre um site próprio para orientar: a extensão injeta uma bolinha e um painel de conversa sobre a página atual, após a pessoa tocar no ícone do Farol no navegador. A bolinha pode ser movida para não atrapalhar. O painel inicial é simples e as ferramentas adicionais ficam recolhidas.
+## Instalação experimental
 
-Farol is a digital-inclusion assistant prototype. It does not open a separate website to provide guidance: after the person clicks the Farol browser icon, the extension places an orb and conversation panel over the current page. The orb can be moved out of the way. The initial panel is simple, with extra tools collapsed.
-
-## Protótipo / Prototype
-
-- `index.html` é a demonstração visual original.
-- `extension/` contém uma extensão experimental para Chrome/Edge desktop. Ao tocar no ícone do navegador, ela tenta mostrar a bolinha sobre a aba atual; não abre uma página própria. A pessoa toca na bolinha para abrir ou fechar o chat.
-- A pessoa descreve o que procura; o protótipo tenta encontrar texto ou um controle com palavras semelhantes e destacar uma possível correspondência. A pessoa confere e interage. O Farol não clica.
-- “Mais ferramentas” contém colar trecho de manual, copiar a conversa e encerrar/limpar os dados temporários desta aba.
-- A extensão pode exibir até três alertas por overlay quando o pedido, trecho informado ou resultado contém palavras associadas a pagamento ou exclusão. A detecção é heurística, pode falhar e não bloqueia a página.
-- O protótipo não usa IA ou servidor, não salva a conversa, não paga, apaga, envia mensagens ou pede senhas.
-
-## Instalar a extensão experimental / Install the experimental extension
-
-1. Baixe ou clone este repositório no computador.
+1. Baixe ou clone o repositório em um computador.
 2. Abra `chrome://extensions` no Chrome ou `edge://extensions` no Edge.
 3. Ative **Modo do desenvolvedor**.
-4. Escolha **Carregar sem compactação** e selecione a pasta `extension/`.
-5. Abra um site comum e toque no ícone do Farol na barra do navegador. A bolinha será colocada sobre a página atual. Páginas internas ou protegidas podem bloquear extensões.
+4. Selecione **Carregar sem compactação** e escolha a pasta `extension/`.
+5. Abra um site comum e toque no ícone do Farol na barra do navegador. Páginas internas e protegidas podem bloquear extensões.
 
-É uma instalação de teste para computador, não uma publicação na loja nem um app para celular. A extensão usa a permissão `activeTab` quando a pessoa aciona o ícone; o conteúdo não é enviado para um servidor. Para remover os dados temporários, abra o chat, toque em **Mais ferramentas** e escolha **Encerrar e limpar**.
+A extensão usa `activeTab`: a pessoa a chama explicitamente para a aba atual. Isso evita pedir acesso indiscriminado a todos os sites. Para usar em outra aba, chame o Farol novamente nela. O navegador não permite extensões em todas as páginas, e esta versão não acompanha automaticamente a navegação entre abas.
 
-## Limitações importantes / Important limitations
+## Limitações
 
-- A extensão só é ativada na aba atual após a pessoa tocar no ícone. Ela não acompanha automaticamente outras abas nem permanece disponível em páginas que o navegador bloqueia.
-- A busca é simples e pode destacar o lugar errado ou não encontrar nada. Sempre confira o destaque.
-- O trecho de manual/README precisa ser colado pela pessoa; o protótipo não busca documentação automaticamente.
-- Os alertas usam palavras-chave, podem deixar passar riscos ou gerar avisos indevidos e não são uma proteção para pagamentos ou exclusões.
-- Não há IA, voz, integração com tradutores, controle de permissões de sites, nem suporte móvel nesta versão.
-- O protótipo não foi testado em todos os sites/navegadores e não deve ser usado como mecanismo de segurança.
-
-## Princípio de segurança / Safety principle
-
-O Farol orienta, explica e destaca um possível caminho. A pessoa revisa e interage. Não apagar, pagar, enviar ou confirmar automaticamente.
+- O destaque por palavras pode marcar o elemento errado ou não encontrar nada; confirme antes de interagir.
+- O trecho de manual precisa ser colado pela pessoa; não há busca automática nem IA.
+- Alertas heurísticos não são proteção confiável contra pagamento ou exclusão.
+- Não há controle automático de permissões de sites, voz nem suporte móvel.
+- Esta versão não foi testada em todos os sites/navegadores e não está pronta para ser tratada como mecanismo de segurança.
